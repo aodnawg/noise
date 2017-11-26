@@ -1,26 +1,30 @@
+import _ from 'lodash';
+
 export default class Rewriter {
 
   constructor(target = 'noise') {
     this.target   = target;
-    this.text     = document.getElementsByClassName(target)[0].innerText;
+    this.nodes    = document.getElementsByClassName(target);
     this.class_names = new Array;
-    this.new_text = this.make_new_text();
   }
 
   call() {
-    this.clear();
-    this.new_text.forEach(s =>
-      document.getElementsByClassName(this.target)[0].appendChild(s)
-    );
+    _.each(this.nodes, (node, i) => {
+      let new_text = this.make_new_text(node);
+      document.getElementsByClassName(this.target)[i].innerText = '';
+      new_text.forEach(s =>
+        document.getElementsByClassName(this.target)[i].appendChild(s)
+      );
+    });
   }
 
   clear() {
     document.getElementsByClassName(this.target)[0].innerText = '';
   }
 
-  make_new_text() {
+  make_new_text(node) {
     let new_text = [];
-    this.to_array(this.text).forEach((s, i) => {
+    this.to_array(node.innerText).forEach((s, i) => {
       let char = document.createTextNode(s);
       let node = this.make_span_tag(`char_${i}`);
       node.appendChild(char);
