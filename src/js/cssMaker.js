@@ -18,9 +18,9 @@ export default class CssMaker extends KeyframesMaker {
     csses.push(this.make_common_char_css());
     this.char_class_names.forEach(class_name => {
       let keyframes_name = `${class_name}_anime`
-      let keyframes = this.make_keyframes(keyframes_name, 6); //XXX
+      let keyframes = this.make_keyframes(keyframes_name, 20); //XXX
       csses.push(keyframes)
-      csses.push(`.noise:hover .${class_name} { animation: ${keyframes_name} 1s steps(1) infinite; }`)
+      csses.push(`.noise:hover .${class_name} { animation: ${keyframes_name} 1s infinite; }`)
     });
     return csses.join('\n');
   }

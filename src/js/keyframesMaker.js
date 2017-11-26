@@ -39,13 +39,17 @@ export default class KeyframesMaker {
     return `transform: ${this.make_translate()} ${this.make_rotate()} ${this.make_scale()}`;
   }
 
+  make_opacity(){
+    return `opacity: ${random(0,100) / 100}`
+  }
+
   make_keyframes(name, steps) {
     let css, css_child = [];
 
     for(let i = 0; i< steps; i++){
       let percentage = Math.floor(100 / steps * i) + '%';
       let translate = i == 0 ? 'transform: translate(0, 0)' : this.make_transform(); //XXX
-      let css = `${percentage} { ${ translate } }`
+      let css = `${percentage} { ${ translate }; ${ this.make_opacity() } }`
       css_child.push(css)
     }
 
