@@ -7,7 +7,7 @@
     "build": "./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack"
   },
-  "author": "",
+  "author": "ringomenoko",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",

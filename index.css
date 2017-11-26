@@ -1,7 +1,29 @@
-.noise{
-	font-family: 'Sawarabi Mincho', sans-serif;
+.noise {
 	font-size: 28px;
 	border: 1px solid;
 	padding: 10px 30px;
 	display: inline-block;
+}
+
+h1, h2, h3 {
+	font-family: 'Questrial', sans-serif !important;
+}
+
+section {
+	margin-bottom: 100px;
+}
+
+.visual {
+	padding: 100px 0 150px;
+}
+
+.visual h1 {
+	margin-bottom: 30px;
+}
+.visual p {
+	font-size: 20px;
+}
+
+p {
+	font-family: 'Hind Siliguri', sans-serif;
 }
