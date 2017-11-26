@@ -8,8 +8,9 @@ export default class Rewriter {
     this.class_names = new Array;
   }
 
-  call(target) {
+  call(target, option) {
     this.target = target;
+    this.option = option;
     this.set_this_nodes();
 
     _.each(this.nodes, (node, i) => {
