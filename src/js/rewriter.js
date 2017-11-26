@@ -1,6 +1,7 @@
 export default class Rewriter {
 
   constructor(target = 'noise') {
+    this.target   = target;
     this.text     = document.getElementsByClassName(target)[0].innerText;
     this.class_names = new Array;
     this.new_text = this.make_new_text();
@@ -9,12 +10,12 @@ export default class Rewriter {
   call() {
     this.clear();
     this.new_text.forEach(s =>
-      document.getElementsByClassName('noise')[0].appendChild(s)
+      document.getElementsByClassName(this.target)[0].appendChild(s)
     );
   }
 
   clear() {
-    document.getElementsByClassName('noise')[0].innerText = '';
+    document.getElementsByClassName(this.target)[0].innerText = '';
   }
 
   make_new_text() {
