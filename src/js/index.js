@@ -1,3 +1,6 @@
 import Noise from './noise'
-let noise = new Noise;
-noise.call()
+
+window.noise = function (target ='noise', option = {}) {
+  let noise = new Noise;
+  noise.call(target);
+}

@@ -8,8 +8,8 @@ export default class Noise {
     this.css_maker = new CssMaker;
   }
 
-  call() {
-    this.rewriter.call();
+  call(target) {
+    this.rewriter.call(target);
     this.char_class_names = this.rewriter.class_names;
     this.css_maker.call(this.char_class_names);
   }

@@ -8,7 +8,9 @@ export default class Rewriter {
     this.class_names = new Array;
   }
 
-  call() {
+  call(target) {
+    this.target = target;
+
     _.each(this.nodes, (node, i) => {
       let new_text = this.make_new_text(node);
       document.getElementsByClassName(this.target)[i].innerText = '';
