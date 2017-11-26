@@ -4,12 +4,13 @@ export default class Rewriter {
 
   constructor(target = 'noise') {
     this.target   = target;
-    this.nodes    = document.getElementsByClassName(target);
+    this.nodes;
     this.class_names = new Array;
   }
 
   call(target) {
     this.target = target;
+    this.set_this_nodes();
 
     _.each(this.nodes, (node, i) => {
       let new_text = this.make_new_text(node);
@@ -51,5 +52,9 @@ export default class Rewriter {
       array.push(char)
     }
     return array;
+  }
+
+  set_this_nodes() {
+    this.nodes = document.getElementsByClassName(this.target);
   }
 }

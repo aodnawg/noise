@@ -4,9 +4,11 @@ export default class CssMaker extends KeyframesMaker {
   constructor(){
     super();
     this.char_class_names;
+    this.target;
   }
 
-  call(char_class_names) {
+  call(target, char_class_names) {
+    this.target = target;
     this.char_class_names = char_class_names;
     let css = this.init_css_tag();
     css.appendChild(document.createTextNode(this.generate_css_content()));
@@ -20,7 +22,8 @@ export default class CssMaker extends KeyframesMaker {
       let keyframes_name = `${class_name}_anime`
       let keyframes = this.make_keyframes(keyframes_name, 20); //XXX
       csses.push(keyframes)
-      csses.push(`.noise:hover .${class_name} { animation: ${keyframes_name} 1s infinite; }`)
+      csses.push(`.${this.target}:hover .${class_name} { animation: ${keyframes_name} 1s infinite; }`)
+
     });
     return csses.join('\n');
   }
