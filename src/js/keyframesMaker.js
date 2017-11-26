@@ -6,7 +6,7 @@ export default class KeyframesMaker {
   get_pos() {
     let min = -3;
     let max = 3;
-    if (random(1, 10) == 1) { return  [random(min, max), random(-100, 100)].map( x => x + 'px'); } //XXX
+    if (random(1, 10) == 1) { return  [random(min, max), random(-200, 200)].map( x => x + 'px'); } //XXX
     return [random(min, max), random(min, max)].map( x => x + 'px');
   }
 
@@ -27,7 +27,7 @@ export default class KeyframesMaker {
   get_scale() {
     let min = 0;
     let max = 15;
-    if (random(1, 50) == 1) { return random(min, 200) / 10; } //XXX
+    if (random(1, 100) == 1) { return random(min, 200) / 10; } //XXX
     return random(min, max) / 10;
   }
 

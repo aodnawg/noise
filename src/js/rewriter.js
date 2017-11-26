@@ -13,6 +13,21 @@ export default class Rewriter {
     );
   }
 
+  clear() {
+    document.getElementsByClassName('noise')[0].innerText = '';
+  }
+
+  make_new_text() {
+    let new_text = [];
+    this.to_array(this.text).forEach((s, i) => {
+      let char = document.createTextNode(s);
+      let node = this.make_span_tag(`char_${i}`);
+      node.appendChild(char);
+      new_text.push(node);
+    });
+    return new_text;
+  }
+
   make_span_tag(class_name) {
     let node = document.createElement('span');
     if (class_name) {
@@ -22,18 +37,12 @@ export default class Rewriter {
     return node;
   }
 
-  make_new_text() {
-    let new_text = [];
-    this.text.split('').forEach((s, i) => {
-      let char = document.createTextNode(s);
-      let node = this.make_span_tag(`char_${i}`);
-      node.appendChild(char);
-      new_text.push(node);
-    });
-    return new_text;
-  }
-
-  clear() {
-    document.getElementsByClassName('noise')[0].innerText = '';
+  to_array(text) { // 空白を含めてsplit()でarrayを作成出来ない
+    let array = [];
+    for(let i=0; i < text.length; i++) {
+      let char = text[i] == ' ' ? '\u00a0' : text[i];
+      array.push(char)
+    }
+    return array;
   }
 }
